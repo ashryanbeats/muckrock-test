@@ -18,3 +18,8 @@ Returns
   partial: { totalCount: 3 }
 }
 ```
+
+Note
+
+- Quick and dirty test run to play with the API
+- Not yet paging through responses, so this is just the first 50 results returned
