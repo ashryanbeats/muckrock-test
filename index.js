@@ -58,19 +58,18 @@ const processOverallStats = (data) => {
       };
     }
 
-    if (curr.status === "done") {
-      if (acc[curr.status].totalDays) {
-        acc[curr.status].totalDays += curr.dateDiff;
-      } else {
-        acc[curr.status].totalDays = curr.dateDiff;
-      }
+    if (acc[curr.status].totalDays) {
+      acc[curr.status].totalDays += curr.dateDiff;
+    } else {
+      acc[curr.status].totalDays = curr.dateDiff;
     }
 
     return acc;
   }, {});
 
-  requestStatusStats.done.tatAvg =
-    requestStatusStats.done.totalDays / requestStatusStats.done.totalCount;
+  Object.values(requestStatusStats).forEach((el) => {
+    el.tatAvg = el.totalDays / el.totalCount;
+  });
 
   return requestStatusStats;
 };
